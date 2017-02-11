@@ -15,8 +15,9 @@ There is no warranty of this script. For more information, read the MIT Licence
 # How to Use it
 1. Clone or download the ``__init__.py`` file
 
-2. Run the command ``python __init__.py -dir "C:\path\to\folder" -silent``
-
+2. Run the following command:
+ 1. **Windows:** ``python __init__.py -dir "C:\path\to\folder" -silent``
+ 2. **Linux:** ``.\__init__.py -dir "C:\path\to\folder" -silent``
 * The script is **verbose name** by default
 * Use ```-silent```parameter to use it in quiet mode or just use the ```-dir``` parameter to inform the folder
 
