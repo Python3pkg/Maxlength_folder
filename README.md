@@ -1,7 +1,7 @@
 # Maxlength Folder Eraser
 It's a script used to take care of issues regarding folders and files with too many characters
 
->Tested on Python 3.6 and 3.52
+>Tested using Python 3.6 and 3.52 on Windows10 and Ubuntu16
 
 # Warning
 
@@ -19,3 +19,6 @@ There is no warranty of this script.
 
 * The script is **verbose name** by default
 * Use ```-silent```parameter to use it in quiet mode or just use the ```-dir``` parameter to inform the folder
+
+# Log system
+By default, the filename is **maxlength-folder-eraser.log** and you can check the entire process there! 
