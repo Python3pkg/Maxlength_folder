@@ -84,21 +84,28 @@ def Analise(folders):
         # walk truogh the subfolders into the iterated  "folder" var
         for d in os.listdir(folder):
             
-            # rename them
+            # Create the Unique ID
             
             UID = uuid.uuid4()
-            UID = UID.hex [:8]
+            UID = UID.hex [:10]
+            
+            # Rename files
             
             # Log the entire process to a file
-            try:
-                os.rename(os.path.join(folder,d), os.path.join(folder, UID))
-                log.info('Processing: ' + os.path.join(folder,d) + ' updated to: ' + os.path.join(folder, UID))
-            except:
-                
-                e = sys.exc_info()[0]
-                
-                log.warning(os.path.join(folder,d) + ' could not be renamed to: ' + os.path.join(folder, UID))
-                log.error(e)
+            
+            # Do not rename folders/files with 10 chars (seems to be faster)
+            
+            if len(d) > 10:
+            
+                try:
+                    os.rename(os.path.join(folder,d), os.path.join(folder, UID))
+                    log.info('Processing: ' + os.path.join(folder,d) + ' updated to: ' + os.path.join(folder, UID))
+                except:
+                    
+                    e = sys.exc_info()[0]
+                    
+                    log.warning(os.path.join(folder,d) + ' could not be renamed to: ' + os.path.join(folder, UID))
+                    log.error(e)
             
             
         # Read again the dirs - now it's already renamed
