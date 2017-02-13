@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+
+This script should not be used.
+
+It's made for test purpose only!!!
+
+"""
+
 import sys
 import os
 import uuid
@@ -30,14 +38,12 @@ def Analise(folders):
             
             # Do not rename folders/files with 10 chars (seems to be faster)
             
-            if len(d) > 10:
-            
-                try:
-                    print(os.path.join(folder,d), os.path.join(folder, UID))
+            try:
+                print(folder, d)
 
-                except:
-                    
-                    e = sys.exc_info()[0]
+            except:
+                
+                e = sys.exc_info()[0]
 
             
         # Read again the dirs - now it's already renamed
@@ -54,5 +60,6 @@ def Analise(folders):
         # Recursively calls the function passing the list "Dirs" as a new parameter
         Analise(Dirs)
         
-root_dir = "C:\\Users\\frreinert\\Desktop\\QUALIDADE"
+root_dir = ['C:\\Users\\frreinert\\Desktop\\QUALIDADE']
+
 Analise(root_dir)
