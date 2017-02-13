@@ -176,24 +176,22 @@ def Analise(folders):
         # Read again the dirs - now it's already renamed
                   
         # Check if folder has other folders inside, if not, do not add this folder to the recursively call
+                
+        with os.scandir(folder) as it:
             
-          
-        if os.path.isdir(folder):
-        
-            with os.scandir(folder) as it:
+            for entry in it:
                 
-                for entry in it:
+                if entry.is_dir():
                     
-                    if entry.is_dir():
-                        
-                        Dirs.append(os.path.join(folder,d))
+                    Dirs.append(os.path.join(folder,d))
                 
         
-        # Recursively calls the function passing the list "Dirs" as a new parameter
+    
+    # Recursively calls the function passing the list "Dirs" as a new parameter
         
-        if len(Dirs) > 0:
+    if len(Dirs) > 0:
         
-            Analise(Dirs)   
+        Analise(Dirs)   
         
         
 class Timer:
