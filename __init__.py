@@ -15,6 +15,13 @@ log.basicConfig(filename='maxlength-folder-eraser.log', level=log.INFO)
 
 class output():
     
+    """
+    
+    Handle the output
+    for verbose and quiet mode
+    
+    """
+    
     Silent = False
     
     
@@ -158,7 +165,7 @@ def Analise(folders):
                 
                 os.rename(os.path.join(folder,d), os.path.join(folder, UID))
                 
-                log.info('Processing: ' + os.path.join(folder,d) + ' updated to: ' + os.path.join(folder, UID))
+                #log.info('Processing: ' + os.path.join(folder,d) + ' updated to: ' + os.path.join(folder, UID))
             
             except:
                 
@@ -177,18 +184,20 @@ def Analise(folders):
                   
         # Check if folder has other folders inside, if not, do not add this folder to the recursively call
                 
-        with os.scandir(os.path.join(folder,d)) as it:
+        with os.scandir(folder) as it:
             
             for entry in it:
                 
                 if entry.is_dir():
                     
-                    Dirs.append(os.path.join(folder,d))
+                    Dirs.append(os.path.abspath(entry.path))
                 
         
     
     # Recursively calls the function passing the list "Dirs" as a new parameter
-        
+    
+    log.info("Handling folder %s"% folder)
+            
     if len(Dirs) > 0:
         
         Analise(Dirs)   
@@ -198,6 +207,7 @@ def Analise(folders):
         return    
         
 class Timer:
+    
     """
     
     Used to calculate time spent
