@@ -1,12 +1,18 @@
 # Maxlength Folder Eraser
 It's a script used to take care of issues regarding folders and files with too many characters
 
-> Tested on Windows10 and Ubuntu16. Because of the function **os.scandir()** it only works on Python 3.6+
+## Tests
+Tested on Windows10 and Ubuntu16. Works only on Python 3.6+
+
+## Performance
+The script took about 13 minutes to finish a 250GB repository, with very nested folders (dozens of folder levels) and also files that exceeded the maximum length allowed by the NTFS system.
+
+Unfortunately, we cannot use multiple threads because the recursive process needs to be synchronous, but we can merge from the old **listdir** function to **scandir** function (Contained in the OS module - Python 3.6) and make it faster (Part of the code is already using the new function).
 
 # Warning
 
 ## Precautions
-* Already tested on nested and simple folders with files but be aware that there are **No Guarantees**
+* Already tested on nested folders with files but be aware that there are **No Guarantees**
 * This script will rename all files and folders into the ``-dir`` parameter, use it very, very, carefully!!!
 
 ## Warranty
