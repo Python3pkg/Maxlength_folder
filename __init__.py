@@ -177,7 +177,7 @@ def Analise(folders):
                   
         # Check if folder has other folders inside, if not, do not add this folder to the recursively call
                 
-        with os.scandir(folder) as it:
+        with os.scandir(os.path.join(folder,d)) as it:
             
             for entry in it:
                 
