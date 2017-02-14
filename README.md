@@ -1,7 +1,7 @@
 # Maxlength Folder Eraser
 It's a script used to take care of issues regarding folders and files with too many characters
 
->Tested using Python 3.6 and 3.52 on Windows10 and Ubuntu16
+> Tested on Windows10 and Ubuntu16. Because of the function **os.scandir()** it only works on Python 3.6+
 
 # Warning
 
