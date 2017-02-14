@@ -192,7 +192,10 @@ def Analise(folders):
     if len(Dirs) > 0:
         
         Analise(Dirs)   
+    
+    else:
         
+        return    
         
 class Timer:
     """
