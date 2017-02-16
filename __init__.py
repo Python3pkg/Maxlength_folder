@@ -152,35 +152,38 @@ def Analise(folders):
         
         # walk truogh the subfolders into the iterated  "folder" var
         
-        log.info("Handling folder %s" % folder)
+        log.info("Handling folder %s"% folder)
         
-        for d in os.listdir(folder):
+        with os.scandir(folder) as it:
+
             
-            # Create the Unique ID as HEX to keep it smaller
-                        
-            # Rename files
+            for entry in it:
             
-            # Log the entire process to a file
-            
-            UID = hex(FOLDER_NUM)
-            
-            try:
+                # Create the Unique ID as HEX to keep it smaller
+                            
+                # Rename files
                 
-                os.rename(os.path.join(folder,d), os.path.join(folder, UID))
+                # Log the entire process to a file
                 
-                #log.info('Processing: ' + os.path.join(folder,d) + ' updated to: ' + os.path.join(folder, UID))
-            
-            except:
+                UID = hex(FOLDER_NUM)
                 
-                e = sys.exc_info()[0]
+                try:
+                    
+                    os.rename(entry.path, os.path.join(folder, UID))
+                    
+                    #log.info('Processing: ' + os.path.join(folder,d) + ' updated to: ' + os.path.join(folder, UID))
                 
-                log.warning(os.path.join(folder,d) + ' could not be renamed to: ' + os.path.join(folder, UID))
+                except:
+                    
+                    e = sys.exc_info()[0]
+                    
+                    log.warning(entry.path + ' could not be renamed to: ' + os.path.join(folder, UID))
+                    
+                    log.error(e)
                 
-                log.error(e)
-            
-            # Increase the folder number
-            
-            FOLDER_NUM += 1
+                # Increase the folder number
+                
+                FOLDER_NUM += 1
             
         
         # Read again the dirs - now it's already renamed
