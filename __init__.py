@@ -156,7 +156,6 @@ def Analise(folders):
         
         with os.scandir(folder) as it:
 
-            
             for entry in it:
             
                 # Create the Unique ID as HEX to keep it smaller
