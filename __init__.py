@@ -3,7 +3,6 @@
 
 import sys
 import os
-import uuid
 import timeit
 import logging as log
 from time import gmtime, strftime
@@ -45,7 +44,7 @@ class version():
     
     VERS        = 0.1
     
-    DAT         = "11/02/2017"
+    DAT         = "14/02/2017"
     
     COPYRIGHT   = "Developed by Fabricio Roberto Reinert"
     
@@ -149,11 +148,14 @@ def Analise(folders):
     
     for folder in folders:
         
+        # Log The Current folder process
+        
         # walk truogh the subfolders into the iterated  "folder" var
         
         log.info("Handling folder %s"% folder)
         
         with os.scandir(folder) as it:
+
             
             for entry in it:
             
