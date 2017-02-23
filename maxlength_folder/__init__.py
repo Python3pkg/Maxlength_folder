@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import sys
@@ -7,7 +6,7 @@ import timeit
 import logging as log
 from time import gmtime, strftime
 
-# Log file setup
+__version__ = '0.2.0'
 
 log.basicConfig(filename='maxlength-folder-eraser.log', level=log.INFO)
 
@@ -15,7 +14,6 @@ log.basicConfig(filename='maxlength-folder-eraser.log', level=log.INFO)
 class output():
     
     """
-    
     Handle the output
     for verbose and quiet mode
     
@@ -35,39 +33,11 @@ class output():
             
             print(string)
 
-class version():
-    """
-    
-    Version information
-    
-    """
-    
-    VERS        = 0.1
-    
-    DAT         = "14/02/2017"
-    
-    COPYRIGHT   = "Developed by Fabricio Roberto Reinert"
-    
-    
-    def __init__(self, silent):
-    
-        o = output(silent)
-        
-        o.out("-------------------------------------")
-        
-        o.out("Version:         %f" % self.VERS)
-        
-        o.out("Last Revision:   %s" % self.DAT)
-        
-        o.out(self.COPYRIGHT)
-        
-        o.out("-------------------------------------")
-        
+       
 
 class Argumentos():
     
     """
-    
     Handle initial arguments
     
     """
@@ -109,7 +79,10 @@ class Argumentos():
         if not "SILENT" in self.params:
             
             self.params["SILENT"] = False
-
+            
+                # Start the process log
+        
+        log.info("Target folder is: %s" % os.path.abspath(self.params["DIR"]))
     
     
     # Print Arguments
@@ -133,8 +106,7 @@ FOLDER_NUM = 1
 def Analise(folders):
     
     """
-    
-    Where the magic happens ;)
+    Scans folder and rename files and folders
     
     """
     
@@ -156,7 +128,6 @@ def Analise(folders):
         
         with os.scandir(folder) as it:
 
-            
             for entry in it:
             
                 # Create the Unique ID as HEX to keep it smaller
@@ -213,7 +184,6 @@ def Analise(folders):
 class Timer:
     
     """
-    
     Used to calculate time spent
     and others time stuff 
     
@@ -238,45 +208,6 @@ class Timer:
         log.info("Process finished at %s" % strftime("%Y-%m-%d %H:%M:%S", gmtime()))
         
         log.info("Time elapsed in this process is %s seconds" % str(self.time_end - self.time_start))
-
-
-
-# Get the arguments
-
-_args = Argumentos()
-
-SILENT  = _args.params["SILENT"]
-
-DIR     = [_args.params["DIR"]]
-
-
-# Print Version
-
-_ver = version(SILENT)
-
-
-# Print arguments
-if not SILENT:
-
-    _args.PrintArgs()
-
-
-
-# Start the process log
-
-log.info("Target folder is: %s" % os.path.abspath(DIR[0]))
-
-Time = Timer()
-
-
-# Call the main function to rename files and folders 
-
-_analyzer = Analise(DIR)
-
-
-# Finish process
-
-Time.stop()
 
 
 
