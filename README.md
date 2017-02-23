@@ -19,19 +19,29 @@ Unfortunately, we cannot use multiple threads because the recursive process need
 There is no warranty of this script. For more information, read the MIT Licence
 
 # How to Use it
+
+## Install
+
 1. Run ``pip install maxlength_folder``
 
 2. Be sure to be using Python 3.6+ by running ``python --version`` on your command prompt
 
-3. Run the following command:
- 
- 1. **Windows:** ``python example.py -dir "C:\path\to\folder" -silent``
- 
- 2. **Linux:** ``.\example.py -dir "\path\to\folder" -silent``
+## Usage
 
-* The script is **verbose name** by default
+1. Download example.py
+
+2. To execute, just run the example.py like this:
+
+ - **Windows:** ``python example.py -dir "C:\path\to\folder" -silent``
+ 
+ - **Linux:** ``.\example.py -dir "\path\to\folder" -silent``
+
+## Extra Information
+
+* The script is **verbose** by default
 
 * Use ```-silent```parameter to use it in quiet mode or just use the ```-dir``` parameter to inform the folder
 
 # Log system
+
 By default, the filename is **maxlength-folder-eraser.log** and you can check the process there! 
