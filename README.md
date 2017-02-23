@@ -19,7 +19,7 @@ Unfortunately, we cannot use multiple threads because the recursive process need
 There is no warranty of this script. For more information, read the MIT Licence
 
 # How to Use it
-1. Clone or download the module
+1. pip install maxlength_folder
 
 2. Be sure to be using Python 3.6+ by running ``python --version`` on your command prompt
 
