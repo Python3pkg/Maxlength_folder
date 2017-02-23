@@ -20,7 +20,7 @@ test_requirements = [
 
 setup(
     name='maxlength_folder',
-    version='0.1.2',
+    version='0.2.1',
     description=('Handle files and folder which exceeds the'
                  'maximum length of filesystems'),
     long_description=readme + '\n\n' + history,
