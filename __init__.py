@@ -6,10 +6,7 @@ import timeit
 import logging as log
 from time import gmtime, strftime
 
-__version__ = '0.1.0'
-
-
-# Log file setup
+__version__ = '0.1.2'
 
 log.basicConfig(filename='maxlength-folder-eraser.log', level=log.INFO)
 
@@ -82,7 +79,10 @@ class Argumentos():
         if not "SILENT" in self.params:
             
             self.params["SILENT"] = False
-
+            
+                # Start the process log
+        
+        log.info("Target folder is: %s" % os.path.abspath(self.params["DIR"]))
     
     
     # Print Arguments
