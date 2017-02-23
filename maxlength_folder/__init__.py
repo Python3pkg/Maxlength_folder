@@ -6,7 +6,7 @@ import timeit
 import logging as log
 from time import gmtime, strftime
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 log.basicConfig(filename='maxlength-folder-eraser.log', level=log.INFO)
 
