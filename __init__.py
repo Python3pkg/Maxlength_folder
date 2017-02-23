@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import sys
@@ -6,6 +5,9 @@ import os
 import timeit
 import logging as log
 from time import gmtime, strftime
+
+__version__ = '0.1.0'
+
 
 # Log file setup
 
@@ -15,7 +17,6 @@ log.basicConfig(filename='maxlength-folder-eraser.log', level=log.INFO)
 class output():
     
     """
-    
     Handle the output
     for verbose and quiet mode
     
@@ -35,39 +36,11 @@ class output():
             
             print(string)
 
-class version():
-    """
-    
-    Version information
-    
-    """
-    
-    VERS        = 0.1
-    
-    DAT         = "14/02/2017"
-    
-    COPYRIGHT   = "Developed by Fabricio Roberto Reinert"
-    
-    
-    def __init__(self, silent):
-    
-        o = output(silent)
-        
-        o.out("-------------------------------------")
-        
-        o.out("Version:         %f" % self.VERS)
-        
-        o.out("Last Revision:   %s" % self.DAT)
-        
-        o.out(self.COPYRIGHT)
-        
-        o.out("-------------------------------------")
-        
+       
 
 class Argumentos():
     
     """
-    
     Handle initial arguments
     
     """
@@ -133,8 +106,7 @@ FOLDER_NUM = 1
 def Analise(folders):
     
     """
-    
-    Where the magic happens ;)
+    Scans folder and rename files and folders
     
     """
     
@@ -212,7 +184,6 @@ def Analise(folders):
 class Timer:
     
     """
-    
     Used to calculate time spent
     and others time stuff 
     
@@ -237,45 +208,6 @@ class Timer:
         log.info("Process finished at %s" % strftime("%Y-%m-%d %H:%M:%S", gmtime()))
         
         log.info("Time elapsed in this process is %s seconds" % str(self.time_end - self.time_start))
-
-
-
-# Get the arguments
-
-_args = Argumentos()
-
-SILENT  = _args.params["SILENT"]
-
-DIR     = [_args.params["DIR"]]
-
-
-# Print Version
-
-_ver = version(SILENT)
-
-
-# Print arguments
-if not SILENT:
-
-    _args.PrintArgs()
-
-
-
-# Start the process log
-
-log.info("Target folder is: %s" % os.path.abspath(DIR[0]))
-
-Time = Timer()
-
-
-# Call the main function to rename files and folders 
-
-_analyzer = Analise(DIR)
-
-
-# Finish process
-
-Time.stop()
 
 
 
