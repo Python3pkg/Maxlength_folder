@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import Maxlength_folder_eraser as eraser
+import maxlength_folder as eraser
 
 # Get the arguments
 _args = eraser.Argumentos()
