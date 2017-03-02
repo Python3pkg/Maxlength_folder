@@ -124,7 +124,7 @@ def Analise(folders):
         
         # walk truogh the subfolders into the iterated  "folder" var
         
-        log.info("Handling folder %s"% folder)
+        log.info("Handling folder %s" % folder)
         
         with os.scandir(folder) as it:
 
@@ -167,15 +167,34 @@ def Analise(folders):
                 
                 if entry.is_dir():
                     
-                    Dirs.append(os.path.abspath(entry.path))
-                
+                    try:
+                    
+                        Dirs.append(os.path.abspath(entry.path))
+                        
+                    except:
+                        
+                        e = sys.exc_info()[0]
+            
+                        log.error(e)
+            
+                        return
         
     
     # Recursively calls the function passing the list "Dirs" as a new parameter
             
     if len(Dirs) > 0:
         
-        Analise(Dirs)   
+        try:
+            
+            Analise(Dirs)
+            
+        except:   
+    
+            e = sys.exc_info()[0]
+            
+            log.error(e)
+            
+            return
     
     else:
         
