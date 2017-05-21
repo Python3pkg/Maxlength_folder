@@ -91,9 +91,9 @@ class Argumentos():
     
         print("\n\n-----------\nArguments:\n-----------")
         
-        for k, v in self.params.items():
+        for k, v in list(self.params.items()):
         
-            print("+ %s: %s" % (k,v))
+            print(("+ %s: %s" % (k,v)))
             
             
 # FOLDER_NUM Stores a integer number which will be increased and used to rename files/folders
